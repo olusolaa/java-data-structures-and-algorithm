@@ -1,0 +1,34 @@
+My Solution
+
+public class MorseCodeDecoder {
+    public static String decode(String morseCode) {
+        // your brilliant code here, remember that you can access the preloaded Morse code table through MorseCode.get(code)
+    
+    
+     String decodedMorseCode = "";
+        for (String word : morseCode.split("   ")){
+          for (String letter: word.split(" ")){
+            if (MorseCode.get(letter) != null){
+              decodedMorseCode += MorseCode.get(letter);
+              
+            }
+          }
+          decodedMorseCode += " ";
+        }
+    return decodedMorseCode.trim();
+    }
+}
+
+
+Prefered Solution
+
+import java.util.stream.Collectors;
+import java.util.stream.Stream;
+
+public class MorseCodeDecoder {
+  public static String decode(String morseCode) {
+    return Stream.of(morseCode.trim().split("   "))
+      .map(word -> Stream.of(word.split(" ")).map(MorseCode::get).collect(Collectors.joining()))
+      .collect(Collectors.joining(" "));
+  }
+}
