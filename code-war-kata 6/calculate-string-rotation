@@ -1,0 +1,13 @@
+public class CalculateRotation {
+  static int shiftedDiff(String first, String second){
+    
+    //coffeecoffee // eecoffeecoff 
+   
+      String combined = second + second; 
+
+    if (first.length() == second.length() ){
+    return combined.indexOf(first);
+    }
+    return -1;
+       }
+}
