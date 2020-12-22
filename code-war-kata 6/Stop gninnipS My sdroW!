@@ -1,0 +1,41 @@
+import java.util.Arrays;
+public class SpinWords {
+
+  public String spinWords(String sentence) {
+    //TODO: Code stuff here
+    
+    //find the words longer than 5
+    String reversedWord = "";
+    String collect ="";
+    String [] arr = sentence.split(" ");
+    
+    // if word is less than 5
+    for(int i = 0; i<arr.length; i++){
+       if (arr[i].length() < 5){
+         collect = arr[i];
+       }
+      
+      //if world is more than 4
+      else {
+        String [] newArr = arr[i].split("");
+        for (int j = 0; j < (arr[i].length()/2) ; j++){
+          String temp = newArr[j];
+          newArr[j] = newArr[arr[i].length()-1-j];
+          newArr[arr[i].length()-1-j] = temp; 
+          }
+          
+        //string builder
+        for (int t = 0; t < arr[i].length(); t++){
+          collect = collect + newArr[t];
+        }
+      }
+      reversedWord = reversedWord + collect + " ";
+      //reset collector
+      collect = "";
+    }
+    //reverse the words 
+    return reversedWord.trim();
+    
+    
+  }
+}
