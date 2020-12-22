@@ -1,0 +1,19 @@
+import java. util. ArrayList;
+
+public class CountingDuplicates {
+         public static int duplicateCount(String text) {
+        
+            String keeper = "";
+            int count=0;
+            String temp;
+            for(int i=0; i < text.length(); i++){
+                String currentChar = text.toLowerCase().substring(i,i+1);
+                if (text.toLowerCase().substring(i+1).contains(currentChar)){
+                    if(!keeper.contains(currentChar))
+                    count ++;
+                    keeper += currentChar;
+                }
+            }
+            return count;
+        }
+}
