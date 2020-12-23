@@ -8,3 +8,11 @@ public class Kata {
     return phoneNo;
   }
 }
+
+
+From another Code Warior
+public class Kata {
+  public static String createPhoneNumber(int[] numbers) {
+    return String.format("(%d%d%d) %d%d%d-%d%d%d%d", java.util.stream.IntStream.of(numbers).boxed().toArray());
+  }
+}
