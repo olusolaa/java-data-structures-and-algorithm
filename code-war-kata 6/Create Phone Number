@@ -1,0 +1,10 @@
+public class Kata {
+  public static String createPhoneNumber(int[] numbers) {
+        
+    String phoneNo ="("+numbers[0]+numbers[1]+numbers[2]+")" + " " + numbers[3]+numbers[4]+numbers[5] + "-" ;
+    for (int i= 6; i< 10; i++){
+      phoneNo += numbers[i];
+    }
+    return phoneNo;
+  }
+}
