@@ -1,0 +1,44 @@
+import java.util.*;
+
+public class SmileFaces {
+  
+  public static int countSmileys(List<String> arr) {
+      // Just Smile :
+    
+    String valid = ":;-~D)";
+    int count = 0;
+    for (String i : arr){
+        if (i.length()<4) {
+          count++;
+          String[] temp = i.split("");
+          //test for eyes
+          if (!temp[0].equals(":") && !temp[0].equals(";")) {
+            count--;
+          //test for mouth
+          }else if (!temp[temp.length - 1].equals(")") && !temp[temp.length - 1].equals("D")) {
+            count--;
+          //test for nose
+          }else {
+            boolean testForNose = !temp[1].contains("-") &&  !temp[1].contains("~");
+            if ((i.length() == 3) && testForNose){
+            count--;
+            }
+          }
+        }
+    }
+    return count;
+  }
+}
+
+
+
+Solution 2
+
+import java.util.*;
+
+public class SmileFaces {
+  
+  public static int countSmileys(List<String> arr) {
+    return (int)arr.stream().filter( x -> x.matches("[:;][-~]?[)D]")).count();   
+  }
+}
