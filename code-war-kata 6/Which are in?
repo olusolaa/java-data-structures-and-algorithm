@@ -1,0 +1,32 @@
+import java.util.*;
+public class WhichAreIn { 
+	
+	public static String[] inArray(String[] array1, String[] array2) {
+    
+      List<String> collector = new ArrayList<>();
+      for (String i : array1){
+        for (String j : array2){
+          if(j.contains(i) && !collector.contains(i)){
+            collector.add(i);
+          }
+        }
+      }
+      Collections.sort(collector);
+      String [] inArray = collector.toArray(new String [0]);
+      return inArray;
+	}
+}
+
+
+
+Solution 2
+
+import java.util.Arrays;
+
+import static java.util.Arrays.stream;
+
+public class WhichAreIn {
+    public static String[] inArray(String[] array1, String[] array2) {
+        return stream(array1).filter(s1 -> stream(array2).anyMatch(s2 -> s2.contains(s1))).sorted().distinct().toArray(String[]::new);
+    }
+}
