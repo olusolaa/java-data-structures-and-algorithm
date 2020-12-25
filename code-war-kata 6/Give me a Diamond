@@ -1,0 +1,45 @@
+class Diamond {
+  public static String print(int n) {
+ 
+      String print = "";
+      String str = "*";
+      String space = " "; 
+    
+      if(n%2 ==0 || n<=0){
+      return null;
+      }
+      for(int i=0; i< n; i+=2){
+        print += space.repeat((n-i)/2) + str.repeat(i+1) + "\n";
+      }
+      for(int i=n-2; i> 0; i-=2) {
+        print += space.repeat((n-i)/2)+str.repeat(i) + "\n";
+      }
+      return print;
+	}
+}
+
+
+
+
+Solution 2
+
+import java.util.stream.Collectors;
+import java.util.stream.IntStream;
+
+class Diamond {
+
+    public static String print(
+            final int n
+    ) {
+        if (n < 0 || n % 2 == 0) {
+            return null;
+        }
+
+        return IntStream.range(0, n * 2)
+                .filter(i -> i % 2 > 0)
+                .map(i -> i > n ? n - (i - n) : i)
+                .mapToObj(i -> " ".repeat((n - i) / 2) + "*".repeat(i) + "\n")
+                .collect(Collectors.joining());
+    }
+    
+}
