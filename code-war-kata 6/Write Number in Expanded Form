@@ -1,0 +1,46 @@
+public class Kata
+{
+    public static String expandedForm(int num)
+    {
+      //your code here
+  
+       String store = "";
+       String number = Integer.toString(num);
+       for(int i=0; i<number.length(); i++) {
+           if (!number.substring(i, i + 1).equals("0")) {
+           store += number.substring(i, i + 1);
+               for (int j = 0; j < number.substring(i + 1).length(); j++) {
+                   store += "0";
+               }
+               store += " + ";
+           }
+       }
+
+        return store.substring(0,store.length()-3);
+    }
+}
+
+
+
+
+
+
+
+
+Solution 2
+
+public class Kata
+{
+    public static String expandedForm(int num)
+    {
+        String outs = "";
+        for (int i = 10; i < num; i *= 10) {
+            int rem = num % i;
+            outs = (rem > 0) ? " + " + rem + outs : outs;
+            num -= rem;
+        }
+        outs = num + outs;
+        
+        return outs;
+    }
+}
