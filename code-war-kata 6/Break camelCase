@@ -1,0 +1,26 @@
+class Solution {
+  public static String camelCase(String input) {
+          
+       int count =0; 
+       StringBuilder sb= new StringBuilder(input);
+       for (int i = 0 ;  i< input.length(); i++) {
+           int ascii = (input.charAt(i));
+           if (ascii < 97 ){
+              sb.insert(i+count, " ");
+              count ++;
+           }
+       }
+    return sb.toString();
+  }
+}
+
+
+
+
+import java.util.Arrays;
+
+class Solution {
+  public static String camelCase(String input) {
+    return input.replaceAll("([A-Z])", " $1");
+  }
+}
