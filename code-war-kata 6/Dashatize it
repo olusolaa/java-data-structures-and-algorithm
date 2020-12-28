@@ -2,13 +2,12 @@ import java.util.*;
 public class Solution {
 
     public static String dashatize(int num) {
-      
-       if (num < 0){
-            num *= -1;
-        }
-        Integer numm = num;
+          
+        long a = num;
+        Long longNumber = Math.abs(a);
         StringBuilder str = new StringBuilder();
-        String temp = (numm).toString();
+        String temp = (longNumber).toString();
+
         for (int i = 0; i < temp.length(); i++) {
             if(temp.charAt(i)%2 != 0){
                 str.append("-" + temp.charAt(i) + "-");
@@ -24,5 +23,19 @@ public class Solution {
         }
      return str.toString().replace("--", "-");
     }
+}
 
+
+
+
+
+
+
+public class Solution {
+
+    public static String dashatize(int num) {
+    return Integer.toString(num).replaceAll("([13579])","-$1-").replaceAll("--","-").replaceAll("^-","").replaceAll("-$","");
+    
+
+}
 }
