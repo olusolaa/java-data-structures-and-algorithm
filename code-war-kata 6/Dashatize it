@@ -1,0 +1,28 @@
+import java.util.*;
+public class Solution {
+
+    public static String dashatize(int num) {
+      
+       if (num < 0){
+            num *= -1;
+        }
+        Integer numm = num;
+        StringBuilder str = new StringBuilder();
+        String temp = (numm).toString();
+        for (int i = 0; i < temp.length(); i++) {
+            if(temp.charAt(i)%2 != 0){
+                str.append("-" + temp.charAt(i) + "-");
+            }else {
+                str.append(temp.charAt(i));
+            }
+        }
+        if ((str.charAt(0) ==45 )) {
+            str.replace(0, 1, "");
+        }
+        if ((str.charAt(str.length()-1) ==45 )) {
+            str.replace(str.length() - 1, str.length(), "");
+        }
+     return str.toString().replace("--", "-");
+    }
+
+}
