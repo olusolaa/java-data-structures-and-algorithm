@@ -1,0 +1,61 @@
+import java.util.*;
+public class PlayPass {
+  public static String playPass(String s, int n) {
+    
+        StringBuilder stb = new StringBuilder(s);
+        for (int i = 0; i < stb.length(); i++) {
+                char ascii = stb.charAt(i);
+                if (ascii >= 48 && ascii <= 57) {
+                    stb.setCharAt(i, (char) (57 + 48 - stb.charAt(i)));
+                }
+                if (ascii >= 65 && ascii <= 90 || ascii >= 97 && ascii <= 122) {
+                    int circularShift = stb.charAt(i) + n;
+                    if (circularShift <= 90) {
+                        if (i % 2 == 0) {
+                            stb.setCharAt(i, (char) (circularShift));
+                        } else {
+                            stb.setCharAt(i, (char) (circularShift + 32));
+                        }
+                    } else {
+                        if (i % 2 == 0) {
+                            stb.setCharAt(i, (char) (circularShift -26));
+                        } else {
+                            stb.setCharAt(i, (char) (circularShift -26 + 32));
+                        }
+                    }
+            }
+
+            }
+            stb.reverse();
+    return stb.toString();
+  }
+}
+
+
+
+
+
+public class PlayPass {
+  public static String playPass(String s, int n) {
+        StringBuilder result = new StringBuilder();
+        for (int i = 0; i < s.length(); i++) {
+            char c = s.charAt(i);
+            if (Character.isLetter(c)) {
+                if (i % 2 == 0) {
+                    c = String.valueOf(c).toUpperCase().charAt(0);
+                    if (c + n > 90) c += n - 26;
+                    else c += n;
+                }
+                else {
+                    c = String.valueOf(c).toLowerCase().charAt(0);
+                    if (c + n > 122) c += n - 26;
+                    else c += n;
+                }
+                result.append(c);
+            }
+            else if (Character.isDigit(c)) result.append(9 - Integer.parseInt(String.valueOf(c)));
+            else result.append(c);
+        }
+        return result.reverse().toString();
+    }
+}
