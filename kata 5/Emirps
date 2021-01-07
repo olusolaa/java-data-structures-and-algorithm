@@ -1,0 +1,40 @@
+class Emirps {
+    
+        public static boolean isPrime(long n) {
+
+        for (int i = 2; i * i <= n; i++) {
+            if (n % i == 0) {
+                return false;
+            }
+        }
+        return true;
+    }
+
+    public static int reverse(int num) {
+        int reverseNum = 0;
+        while (num != 0) {
+            reverseNum *= 10;
+            reverseNum += num % 10;
+            num /= 10;
+        }
+        return reverseNum;
+    }
+
+    public static boolean isPalindrome(long number) {
+        return (number == reverse((int) number));
+    }
+
+    public static long[] findEmirp(long n) {
+        long sum = 0;
+        long count = 0;
+        long maxNum = 0;
+        for (int i = 10; i <= n; i++) {
+            if (isPrime(i) && isPrime(reverse(i)) && i != reverse(i)) {
+                count++;
+                sum += i;
+                maxNum = i;
+            }
+        }
+        return new long[]{count, maxNum, sum};
+    }
+}
