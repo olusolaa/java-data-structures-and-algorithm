@@ -1,0 +1,12 @@
+import java.util.stream.Collectors;
+import java.util.stream.IntStream;
+class Solution{    
+    public static String[] dup(String[] arr){
+        String word = String.join(" ", arr);
+        String temp = IntStream.range(1, word.length())
+                .mapToObj(i-> word.charAt(i-1) != word.charAt(i)? word.charAt(i-1): "" )
+                .map(e -> e.toString()).collect(Collectors.joining());
+        temp = word.charAt(word.length() - 1) != temp.charAt(temp.length() - 1) ? temp + word.charAt(word.length() - 1) : temp;
+      return temp.split(" ");
+    }
+}
