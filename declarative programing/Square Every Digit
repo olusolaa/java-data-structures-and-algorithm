@@ -1,0 +1,13 @@
+import java.util.*;
+import java.util.stream.Collectors;
+public class SquareDigit {
+
+    public static int squareDigits(int n) {
+        Integer num = n;
+        StringBuilder str = new StringBuilder();
+        Arrays.stream(num.toString().split("")).map(i -> (int) Math.pow(Double.parseDouble(i),2))
+                .collect(Collectors.toList()).forEach(j->str.append(j));
+        return Integer.parseInt(String.valueOf(str));
+    }
+
+}
