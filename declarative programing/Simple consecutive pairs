@@ -1,0 +1,9 @@
+import java.util.stream.IntStream;
+class Solution{
+    public static int solve(int [] arr){
+    
+    return (int) IntStream.range(0, arr.length-1).filter(y -> y%2 ==0)
+      .filter(i -> Math.abs(arr[i]-arr[i+1])==1).count();
+      
+    }
+}
