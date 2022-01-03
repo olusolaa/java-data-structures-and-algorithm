@@ -1,0 +1,13 @@
+func isValidBST(root *TreeNode) bool {
+	if root.Left == nil && root.Right == nil{
+		return true
+	}else if root.Left == nil && root.Right.Val <= root.Val{
+		 return false
+	}else if root.Right == nil && root.Left.Val >= root.Val{
+		return false
+	}else {
+		return false
+	}
+
+    return isValidBST(root.Left) && isValidBST(root.Right)
+}
