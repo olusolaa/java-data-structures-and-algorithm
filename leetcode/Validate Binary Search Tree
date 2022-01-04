@@ -1,13 +1,15 @@
 func isValidBST(root *TreeNode) bool {
-	if root.Left == nil && root.Right == nil{
-		return true
-	}else if root.Left == nil && root.Right.Val <= root.Val{
+	return recursion(root, nil, nil)
+}
+ func recursion (root, min, max *TreeNode) bool {
+	 if root == nil{
+		 return true
+	 }
+	 if max != nil && root.Val >= max.Val{
 		 return false
-	}else if root.Right == nil && root.Left.Val >= root.Val{
-		return false
-	}else {
+	 }
+	 if min != nil && root.Val <= min.Val{
 		return false
 	}
-
-    return isValidBST(root.Left) && isValidBST(root.Right)
-}
+	 return recursion(root.Left, min, root) && recursion(root.Right, root, max)
+ }
